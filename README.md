@@ -24,3 +24,25 @@ Before you can run the application, ensure you have the following installed:
 - Flask
 - PyMongo
 - BeautifulSoup
+
+## Setup Instructions
+- Clone the repository
+- Start MongoDB:
+Ensure MongoDB is running on your system. You can typically start MongoDB with: mongod
+- Run the Flask Application
+Start the application by executing:
+python app.py
+- Access the Web Interface
+Open a web browser and navigate to:
+http://localhost:5000/
+- Use the provided form to submit URLs for analysis. Results will be displayed on the same page under the form.
+
+- Running the Application
+Once everything is set up, the application will be accessible via a web browser at `http://localhost:5000/`. Enter a URL in the form and click the "Analyze" button to view the analysis of image tags including `alt` attributes.
+
+## Notes
+- Ensure that MongoDB service is running before starting the Flask app.
+- Check Python and library versions if you encounter any compatibility issues.
+
+## Support
+For support, contact saad.ahmed.bari@gmail.com or open an issue in the GitHub repository.
