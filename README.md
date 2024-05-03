@@ -1,8 +1,7 @@
-# Website-Analysis-Data-Engineering
-# Image Alt Tag Analyzer
+# Website-Analyzer-Data-Engineering
 
 ## Overview
-The Image Alt Tag Analyzer is a web application designed to analyze web pages and provide a detailed breakdown of image elements, specifically focusing on the presence or absence of `alt` attributes. It helps in assessing the accessibility and SEO friendliness of web pages.
+The Website Analyzer is a web application designed to analyze web pages and provide a detailed breakdown of image elements, specifically focusing on the presence or absence of `alt` attributes. It helps in assessing the accessibility and SEO friendliness of web pages.
 
 ## Features
 - **Web Crawling**: Fetches web pages and analyzes all image tags.
@@ -27,8 +26,10 @@ Before you can run the application, ensure you have the following installed:
 
 ## Setup Instructions
 - Clone the repository
-- Start MongoDB:
+- Setup MongoDB:
 Ensure MongoDB is running on your system. You can typically start MongoDB with: mongod
+Setup MongoDB database by executing
+python mongodbsetup.py
 - Run the Flask Application
 Start the application by executing:
 python app.py
