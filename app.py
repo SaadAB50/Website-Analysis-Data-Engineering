@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, request, jsonify, render_template
 from pymongo import MongoClient
 from crawler import fetch_and_analyze
 from datetime import datetime
@@ -12,66 +12,7 @@ page_analysis = db.page_analysis
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template_string('''
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>Website Analyzer</title>
-            <style>
-                body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 40px; }
-                h1 { color: #333; }
-                form { max-width: 300px; margin: 20px auto; }
-                input, button { width: 100%; padding: 10px; margin-top: 10px; }
-                table { width: 80%; margin: 20px auto; border-collapse: collapse; }
-                th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
-                th { background-color: #f2f2f2; }
-            </style>
-        </head>
-        <body>
-            <h1>Website Analyzer</h1>
-            <form onsubmit="fetchData(); return false;">
-                <input type="text" id="url" name="url" placeholder="Enter URL to analyze" required>
-                <button type="submit">Analyze</button>
-            </form>
-            <table id="resultTable" style="display:none;">
-                <tr>
-                    <th>Title</th>
-                    <th>Total Images</th>
-                    <th>Images with Alt</th>
-                    <th>Images without Alt</th>
-                    <th>Description</th>
-                    <th>Keywords</th>
-                </tr>
-            </table>
-            <script>
-                function fetchData() {
-                    var url = document.getElementById('url').value;
-                    fetch('/analyze', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({url: url})
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if(data.data) {
-                            var table = document.getElementById('resultTable');
-                            table.style.display = 'table';
-                            var row = table.insertRow(1);
-                            row.insertCell(0).innerHTML = data.data.title;
-                            row.insertCell(1).innerHTML = data.data.total_images;
-                            row.insertCell(2).innerHTML = data.data.images_with_alt;
-                            row.insertCell(3).innerHTML = data.data.images_without_alt;
-                            row.insertCell(4).innerHTML = data.data.meta.description;
-                            row.insertCell(5).innerHTML = data.data.meta.keywords.join(', ');
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-                }
-            </script>
-        </body>
-        </html>
-    ''')
+    return render_template('home.html')
 
 
 @app.route('/analyze', methods=['POST'])
